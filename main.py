@@ -69,7 +69,7 @@ def sec_min():
     global sec_min
     global sec_min_entry
     sec_min = Toplevel()
-    sec_min.title("Seconds Ro Minutes")
+    sec_min.title("Seconds To Minutes")
     sec_min_label1 = Label(sec_min, text="Please enter Seconds value below:- ")   
     sec_min_label1.grid(row=0, column=0)
     sec_min_entry = Entry(sec_min)
@@ -90,6 +90,31 @@ def sec_min_answer():
     sec_min_label2.grid(row=2, column=0)
 
 
+def min_sec():
+    global min_sec
+    global min_sec_entry
+    min_sec = Toplevel()
+    min_sec.title("Seconds To Minutes")
+    min_sec_label1 = Label(min_sec, text="Please enter Minutes value below:- ")   
+    min_sec_label1.grid(row=0, column=0)
+    min_sec_entry = Entry(min_sec)
+    min_sec_entry.grid(row=1, column=0)   
+    min_sec_enterbutton = Button(min_sec, text="Enter", command=min_sec_answer)
+    min_sec_enterbutton.grid(row=1, column=1)  
+
+def min_sec_answer():
+    global min_sec_label2
+    check_label2 = "min_sec_label2" in globals()   
+    if check_label2 == True:
+        min_sec_label2.destroy()
+    else:
+        pass
+    user_input_min_sec = float(min_sec_entry.get())
+    answer_min_sec = user_input_min_sec * 60
+    min_sec_label2 = Label(min_sec, text=str(answer_min_sec) + (" sec"))
+    min_sec_label2.grid(row=2, column=0)
+
+
 def main_window():
     start_button.destroy()
     met_kil_button = Button(root, text="Meter To Kilometer", command=met_kilometer)
@@ -97,7 +122,9 @@ def main_window():
     kil_met_button = Button(root, text="Kilometer to Meter", command=kilo_meter)
     kil_met_button.grid(row=1,column=1)
     sec_min_button = Button(root, text="Seconds To Minutes", command=sec_min)
-    sec_min_button.grid(row=1,column=2)   
+    sec_min_button.grid(row=1,column=2)
+    min_sec_button = Button(root, text="Minutes to Seconds", command=min_sec)
+    min_sec_button.grid(row=2,column=0)      
 
 start_button = Button(root, text="Click ME!", command=main_window)
 start_button.pack()
