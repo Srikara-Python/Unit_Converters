@@ -166,6 +166,30 @@ def min_hour_answer():
     min_hour_label2 = Label(min_hour, text=str(answer_min_hour) + (" hours"))
     min_hour_label2.grid(row=2, column=0)
 
+def g_kg():
+    global g_kg
+    global g_kg_entry
+    g_kg = Toplevel()
+    g_kg.title("Minutes To Hour")
+    g_kg_label1 = Label(g_kg, text="Please enter Grams value below:- ")   
+    g_kg_label1.grid(row=0, column=0)
+    g_kg_entry = Entry(g_kg)
+    g_kg_entry.grid(row=1, column=0)   
+    g_kg_enterbutton = Button(g_kg, text="Enter", command=g_kg_answer)
+    g_kg_enterbutton.grid(row=1, column=1)  
+
+def g_kg_answer():
+    global g_kg_label2
+    check_label2 = "g_kg_label2" in globals()   
+    if check_label2 == True:
+        g_kg_label2.destroy()
+    else:
+        pass
+    user_input_g_kg = float(g_kg_entry.get())
+    answer_g_kg = user_input_g_kg / 1000 
+    g_kg_label2 = Label(g_kg, text=str(answer_g_kg) + (" Kg"))
+    g_kg_label2.grid(row=2, column=0)
+
 def main_window():
     start_label.destroy()
     start_button.destroy()
@@ -197,7 +221,7 @@ def main_window():
     sec_hour_button = Button(root, text="Seconds to Hours", command=sec_hour, bg='green')
     sec_hour_button.grid(row=6,column=1)
 
-    g_kg_button = Button(root, text="Grams To KiloGrams", command=sec_hour, bg='orange')
+    g_kg_button = Button(root, text="Grams To KiloGrams", command=g_kg, bg='orange')
     g_kg_button.grid(row=11,column=1)         
 
 start_label = Label(root, text="Welcome! Click the below button to start.", bg='black', fg='white')
