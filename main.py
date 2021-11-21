@@ -3,7 +3,6 @@
 # Srikara Narasimha
 """this is open-source and free to copy."""
 
-
 from tkinter import * 
 
 root = Tk()
@@ -64,8 +63,31 @@ def kilo_meter_answer():
     kilo_meter_label2 = Label(kilo_meter, text=str(answer_kilo_meter) + (" m"))
     kilo_meter_label2.grid(row=2, column=0)
 
-    kilo_meter.mainloop()
 
+
+def sec_min():
+    global sec_min
+    global sec_min_entry
+    sec_min = Toplevel()
+    sec_min.title("Seconds Ro Minutes")
+    sec_min_label1 = Label(sec_min, text="Please enter Seconds value below:- ")   
+    sec_min_label1.grid(row=0, column=0)
+    sec_min_entry = Entry(sec_min)
+    sec_min_entry.grid(row=1, column=0)   
+    sec_min_enterbutton = Button(sec_min, text="Enter", command=sec_min_answer)
+    sec_min_enterbutton.grid(row=1, column=1)  
+
+def sec_min_answer():
+    global sec_min_label2
+    check_label2 = "sec_min_label2" in globals()   
+    if check_label2 == True:
+        sec_min_label2.destroy()
+    else:
+        pass
+    user_input_sec_min = float(sec_min_entry.get())
+    answer_sec_min = user_input_sec_min / 60
+    sec_min_label2 = Label(sec_min, text=str(answer_sec_min) + (" min"))
+    sec_min_label2.grid(row=2, column=0)
 
 
 def main_window():
@@ -74,13 +96,11 @@ def main_window():
     met_kil_button.grid(row=1,column=0)
     kil_met_button = Button(root, text="Kilometer to Meter", command=kilo_meter)
     kil_met_button.grid(row=1,column=1)
-    
+    sec_min_button = Button(root, text="Seconds To Minutes", command=sec_min)
+    sec_min_button.grid(row=1,column=2)   
+
 start_button = Button(root, text="Click ME!", command=main_window)
 start_button.pack()
-
-
-
-
 
 
 
