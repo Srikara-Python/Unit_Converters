@@ -142,9 +142,29 @@ def sec_hour_answer():
     sec_hour_label2 = Label(sec_hour, text=str(answer_sec_hour) + (" hours"))
     sec_hour_label2.grid(row=2, column=0)
 
+def min_hour():
+    global min_hour
+    global min_hour_entry
+    min_hour = Toplevel()
+    min_hour.title("Minutes To Hour")
+    min_hour_label1 = Label(min_hour, text="Please enter Minutes value below:- ")   
+    min_hour_label1.grid(row=0, column=0)
+    min_hour_entry = Entry(min_hour)
+    min_hour_entry.grid(row=1, column=0)   
+    min_hour_enterbutton = Button(min_hour, text="Enter", command=min_hour_answer)
+    min_hour_enterbutton.grid(row=1, column=1)  
 
-
-
+def min_hour_answer():
+    global min_hour_label2
+    check_label2 = "min_hour_label2" in globals()   
+    if check_label2 == True:
+        min_hour_label2.destroy()
+    else:
+        pass
+    user_input_min_hour = float(min_hour_entry.get())
+    answer_min_hour = user_input_min_hour / 60 
+    min_hour_label2 = Label(min_hour, text=str(answer_min_hour) + (" hours"))
+    min_hour_label2.grid(row=2, column=0)
 
 def main_window():
     start_label.destroy()
@@ -172,7 +192,7 @@ def main_window():
     sec_min_button.grid(row=6,column=2)
     min_sec_button = Button(root, text="Minutes to Seconds", command=min_sec, bg='green')
     min_sec_button.grid(row=6,column=0)
-    min_hour_button = Button(root, text="Minutes to Seconds", command=min_sec, bg='green')
+    min_hour_button = Button(root, text="Minutes to Hours", command=min_hour, bg='green')
     min_hour_button.grid(row=7,column=0)         
     sec_hour_button = Button(root, text="Seconds to Hours", command=sec_hour, bg='green')
     sec_hour_button.grid(row=6,column=1)
