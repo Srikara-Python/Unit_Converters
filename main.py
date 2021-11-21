@@ -1,6 +1,8 @@
 # This is the main file for this app
 # Start Date - 20.11.21
 # Srikara Narasimha
+"""this is open-source and free to copy."""
+
 
 from tkinter import * 
 
