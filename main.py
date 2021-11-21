@@ -2,6 +2,7 @@
 # Start Date - 20.11.21
 # Srikara Narasimha
 """this is open-source and free to copy."""
+""" Under the unlicence licence. Read LICENCE page """
 
 from tkinter import * 
 
@@ -65,31 +66,6 @@ def kilo_meter_answer():
 
 
 
-def sec_min():
-    global sec_min
-    global sec_min_entry
-    sec_min = Toplevel()
-    sec_min.title("Seconds To Minutes")
-    sec_min_label1 = Label(sec_min, text="Please enter Seconds value below:- ")   
-    sec_min_label1.grid(row=0, column=0)
-    sec_min_entry = Entry(sec_min)
-    sec_min_entry.grid(row=1, column=0)   
-    sec_min_enterbutton = Button(sec_min, text="Enter", command=sec_min_answer)
-    sec_min_enterbutton.grid(row=1, column=1)  
-
-def sec_min_answer():
-    global sec_min_label2
-    check_label2 = "sec_min_label2" in globals()   
-    if check_label2 == True:
-        sec_min_label2.destroy()
-    else:
-        pass
-    user_input_sec_min = float(sec_min_entry.get())
-    answer_sec_min = user_input_sec_min / 60
-    sec_min_label2 = Label(sec_min, text=str(answer_sec_min) + (" min"))
-    sec_min_label2.grid(row=2, column=0)
-
-
 def min_sec():
     global min_sec
     global min_sec_entry
@@ -115,20 +91,75 @@ def min_sec_answer():
     min_sec_label2.grid(row=2, column=0)
 
 
+def sec_min():
+    global sec_min
+    global sec_min_entry
+    sec_min = Toplevel()
+    sec_min.title("Seconds To Minutes")
+    sec_min_label1 = Label(sec_min, text="Please enter Seconds value below:- ")   
+    sec_min_label1.grid(row=0, column=0)
+    sec_min_entry = Entry(sec_min)
+    sec_min_entry.grid(row=1, column=0)   
+    sec_min_enterbutton = Button(sec_min, text="Enter", command=sec_min_answer)
+    sec_min_enterbutton.grid(row=1, column=1)  
+
+def sec_min_answer():
+    global sec_min_label2
+    check_label2 = "sec_min_label2" in globals()   
+    if check_label2 == True:
+        sec_min_label2.destroy()
+    else:
+        pass
+    user_input_sec_min = float(sec_min_entry.get())
+    answer_sec_min = user_input_sec_min / 60
+    sec_min_label2 = Label(sec_min, text=str(answer_sec_min) + (" min"))
+    sec_min_label2.grid(row=2, column=0)
+
+
+def sec_hour():
+    global sec_hour
+    global sec_hour_entry
+    sec_hour = Toplevel()
+    sec_hour.title("Seconds To Hour")
+    sec_hour_label1 = Label(sec_hour, text="Please enter Seconds value below:- ")   
+    sec_hour_label1.grid(row=0, column=0)
+    sec_hour_entry = Entry(sec_hour)
+    sec_hour_entry.grid(row=1, column=0)   
+    sec_hour_enterbutton = Button(sec_hour, text="Enter", command=sec_hour_answer)
+    sec_hour_enterbutton.grid(row=1, column=1)  
+
+def sec_hour_answer():
+    global sec_hour_label2
+    check_label2 = "sec_hour_label2" in globals()   
+    if check_label2 == True:
+        sec_hour_label2.destroy()
+    else:
+        pass
+    user_input_sec_hour = float(sec_hour_entry.get())
+    answer_sec_hour = user_input_sec_hour / 60 / 60
+    sec_hour_label2 = Label(sec_hour, text=str(answer_sec_hour) + (" hours"))
+    sec_hour_label2.grid(row=2, column=0)
+
+
+
+
+
 def main_window():
     start_button.destroy()
-    met_kil_button = Button(root, text="Meter To Kilometer", command=met_kilometer)
+    met_kil_button = Button(root, text="Meter To Kilometer", command=met_kilometer, bg='blue')
     met_kil_button.grid(row=1,column=0)
-    kil_met_button = Button(root, text="Kilometer to Meter", command=kilo_meter)
+    kil_met_button = Button(root, text="Kilometer to Meter", command=kilo_meter, bg='blue')
     kil_met_button.grid(row=1,column=1)
-    sec_min_button = Button(root, text="Seconds To Minutes", command=sec_min)
+    sec_min_button = Button(root, text="Seconds To Minutes", command=sec_min, bg='green')
     sec_min_button.grid(row=1,column=2)
-    min_sec_button = Button(root, text="Minutes to Seconds", command=min_sec)
+    min_sec_button = Button(root, text="Minutes to Seconds", command=min_sec, bg='green')
     min_sec_button.grid(row=2,column=0)      
+    sec_hour_button = Button(root, text="Seconds to Hours", command=sec_hour, bg='green')
+    sec_hour_button.grid(row=2,column=1)     
+
 
 start_button = Button(root, text="Click ME!", command=main_window)
 start_button.pack()
-
 
 
 root.mainloop()
