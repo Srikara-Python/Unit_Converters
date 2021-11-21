@@ -8,9 +8,11 @@ from tkinter import *
 
 root = Tk()
 root.title("All in One Converter - Srikara Narasimha")
-root.geometry("500x500+0+0")
+# root.geometry("500x500+0+0")
 root.eval('tk::PlaceWindow . center')
 orig_color = root.cget("background")
+root.resizable(False, False)
+root.configure(bg='black')
 
 def met_kilometer():
     global meter_kilo
@@ -145,20 +147,42 @@ def sec_hour_answer():
 
 
 def main_window():
+    start_label.destroy()
     start_button.destroy()
+    mass_label = Label(root, text="                 Distance", bg='black', fg='white')
+    mass_label.grid(row=0, column=0, columnspan=4)
+    divider_label1 = Label(root, text="---------------------------------------------------------------", bg='black', fg='white')
+    divider_label1.grid(row=4, column=0, columnspan=5)
+
+    time_label = Label(root, text="             Time", bg='black', fg='white')
+    time_label.grid(row=5, column=0, columnspan=4)
+    divider_label2 = Label(root, text="---------------------------------------------------------------", bg='black', fg='white')
+    divider_label2.grid(row=8, column=0, columnspan=5)
+
+    distance_label = Label(root, text="              Mass", bg='black', fg='white')
+    distance_label.grid(row=9, column=0, columnspan=4)
+
     met_kil_button = Button(root, text="Meter To Kilometer", command=met_kilometer, bg='blue')
     met_kil_button.grid(row=1,column=0)
-    kil_met_button = Button(root, text="Kilometer to Meter", command=kilo_meter, bg='blue')
+    kil_met_button = Button(root, text="Kilometer to Meter", command=kilo_meter, bg='blue', )
     kil_met_button.grid(row=1,column=1)
+
+
     sec_min_button = Button(root, text="Seconds To Minutes", command=sec_min, bg='green')
-    sec_min_button.grid(row=1,column=2)
+    sec_min_button.grid(row=6,column=2)
     min_sec_button = Button(root, text="Minutes to Seconds", command=min_sec, bg='green')
-    min_sec_button.grid(row=2,column=0)      
+    min_sec_button.grid(row=6,column=0)
+    min_hour_button = Button(root, text="Minutes to Seconds", command=min_sec, bg='green')
+    min_hour_button.grid(row=7,column=0)         
     sec_hour_button = Button(root, text="Seconds to Hours", command=sec_hour, bg='green')
-    sec_hour_button.grid(row=2,column=1)     
+    sec_hour_button.grid(row=6,column=1)
 
+    g_kg_button = Button(root, text="Grams To KiloGrams", command=sec_hour, bg='orange')
+    g_kg_button.grid(row=11,column=1)         
 
-start_button = Button(root, text="Click ME!", command=main_window)
+start_label = Label(root, text="Welcome! Click the below button to start.", bg='black', fg='white')
+start_label.pack()
+start_button = Button(root, text="Click ME!", command=main_window, bg='black', fg='grey')
 start_button.pack()
 
 
